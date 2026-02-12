@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Portfolio</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f3e8ff; /* light lavender */
+        }
+
+        h1 {
+            text-align: center;
+            color: #6a0dad;
+        }
+
+        h2 {
+            color: #4b0082;
+        }
+
+        hr {
+            border: 2px solid #8a2be2;
+        }
+
+        p, li {
+            color: #333;
+        }
+
+        img {
+            display: block;
+            margin: 15px auto;
+            border-radius: 10px;
+            border: 3px solid #8a2be2;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #ffffff;
+        }
+
+        th {
+            background-color: #cdb4db; /* soft purple */
+            color: black;
+        }
+
+        td {
+            background-color: #f8edff;
+        }
+
+        table, th, td {
+            border: 1px solid #999;
+            padding: 10px;
+            text-align: center;
+        }
+
+        form {
+            background-color: #ffe5ec; /* light pink */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #aaa;
+        }
+
+        input[type="radio"] {
+            width: auto;
+        }
+
+        input[type="submit"] {
+            width: auto;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #6a0dad;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #4b0082;
+        }
+
+        a {
+            color: #6a0dad;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        ul {
+            background-color: #e0bbff;
+            padding: 15px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Student Portfolio</h1>
+    <hr>
+
+    <h2>About Me</h2>
+
+    <p>
+        <b>Name:</b> Pihu Priyansa <br>
+        <b>Course:</b> B.Tech CSE <br>
+        <i>Hi I'm Pihu and I am learning web development</i>
+    </p>
+
+    <img src="pic.jpg" alt="Profile Image" width="200">
+
+    <hr>
+
+    <h2>My Skills</h2>
+   
+     <ul>
+        <li>HTML 😊</li>
+        <li>CSS</li>
+        <li>Java</li>
+    </ul>
+
+    <hr>
+
+    <h2>Contact</h2>
+    
+     <p>
+        <b>Email:</b> pihupriyansa@gmail.com <br>
+        <b>Website:</b> www.ww.com <br>
+        <b>LinkedIn:</b>
+        <a href="https://in.linkedin.com/" target="_blank">Click Here!</a>
+    </p>
+
+    <hr>
+
+    <h2>My Academic Record</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Class</th>
+                <th>Physics</th>
+                <th>Chemistry</th>
+                <th>Mathematics</th>
+                <th>Percentage</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Grade 11</td>
+                <td>82</td>
+                <td>78</td>
+                <td>85</td>
+                <td>81%</td>
+            </tr>
+            <tr>
+                <td>Grade 12</td>
+                <td>88</td>
+                <td>84</td>
+                <td>90</td>
+                <td>87%</td>
+            </tr>
+            <tr>
+                <td>B.Tech 1st Year</td>
+                <td>89</td>
+                <td>86</td>
+                <td>91</td>
+                <td>88%</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4"><b>Total Academic Years</b></td>
+                <td><b>3</b></td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <hr>
+
+    <form>
+        <h2>Contact Form</h2>
+
+        <label><b>Name*</b></label><br>
+        <input type="text" placeholder="First name">
+        <input type="text" placeholder="Last name"><br><br>
+
+        <label><b>Age*</b></label><br>
+        <input type="number"><br><br>
+
+        <label><b>Cool</b></label><br>
+        <input type="range"><br><br>
+
+        <label><b>Gender*</b></label><br>
+        <input type="radio" name="gender"> Male
+        <input type="radio" name="gender"> Female<br><br>
+
+        <label><b>Email*</b></label><br>
+        <input type="email" placeholder="Enter your email"><br><br>
+
+        <label><b>Password*</b></labe*
