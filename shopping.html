@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Advanced Shopping System</title>
+
+<style>
+
+body{
+font-family:'Segoe UI', sans-serif;
+margin:0;
+background:linear-gradient(135deg,#667eea,#764ba2);
+color:#333;
+}
+
+/* HEADER */
+.header{
+text-align:center;
+padding:20px;
+color:white;
+font-size:28px;
+font-weight:bold;
+}
+
+/* CONTROL BAR */
+.controls{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:10px;
+padding:15px;
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(10px);
+}
+
+input,select{
+padding:10px;
+border-radius:8px;
+border:none;
+outline:none;
+}
+
+button{
+padding:10px 15px;
+border:none;
+border-radius:8px;
+background:#ff7e5f;
+color:white;
+cursor:pointer;
+font-weight:bold;
+transition:0.3s;
+}
+
+button:hover{
+background:#ff5733;
+transform:scale(1.05);
+}
+
+/* PRODUCT GRID */
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+padding:20px;
+}
+
+/* PRODUCT CARD */
+.card{
+background:white;
+border-radius:12px;
+padding:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.card h3{
+margin:5px 0;
+}
+
+.price{
+color:#27ae60;
+font-weight:bold;
+}
+
+/* CART PANEL */
+.cart{
+position:fixed;
+top:20px;
+right:20px;
+background:white;
+padding:15px;
+border-radius:10px;
+width:250px;
+box-shadow:0 5px 20px rgba(0,0,0,0.3);
+}
+
+.cart h3{
+margin-top:0;
+}
+
+.cart-item{
+display:flex;
+justify-content:space-between;
+margin:5px 0;
+}
+
+.total{
+font-weight:bold;
+margin-top:10px;
+}
+
+.badge{
+background:red;
+color:white;
+padding:2px 8px;
+border-radius:50%;
+font-size:12px;
+margin-left:5px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">🛒 Smart Shopping System</div>
+
+<div class="controls">
+<button onclick="showProducts()">All</button>
+
+<input type="number" id="searchId" placeholder="Search ID">
+<button onclick="searchProduct()">Search</button>
+
+<select onchange="filterCategory(this.value)">
+<option value="All">All Categories</option>
+<option value="Electronics">Electronics</option>
+<option value="Clothing">Clothing</option>
+<option value="Food">Food</option>
+</select>
+
+<!-- ✅ SORT ADDED (ONLY THIS NEW PART) -->
+<select onchange="sortProducts(this.value)">
+<option value="">Sort By Price</option>
+<option value="low">Price: Low → High</option>
+<option value="high">Price: High → Low</option>
+</select>
+
+</div>
+
+<div class="products" id="productList"></div>
+
+<!-- CART -->
+<div class="cart">
+<h3>Cart 🛒 <span id="count" class="badge">0</span></h3>
+<div id="cartItems"></div>
+<div class="total" id="totalPrice">Total: ₹0</div>
+</div>
+
+<script>
+
+let products=[
+{id:1,name:"Laptop",price:50000,category:"Electronics"},
+{id:2,name:"Mobile",price:20000,category:"Electronics"},
+{id:3,name:"Headphones",price:1500,category:"Electronics"},
+{id:4,name:"T-Shirt",price:800,category:"Clothing"},
+{id:5,name:"Jeans",price:1500,category:"Clothing"},
+{id:6,name:"Jacket",price:2500,category:"Clothing"},
+{id:7,name:"Rice",price:1200,category:"Food"},
+{id:8,name:"Milk",price:60,category:"Food"},
+{id:9,name:"Bread",price:40,category:"Food"},
+{id:10,name:"Smart Watch",price:3000,category:"Electronics"},
+{id:11,name:"Bluetooth Speaker",price:2500,category:"Electronics"},
+{id:12,name:"Power Bank",price:1200,category:"Electronics"},
+{id:13,name:"Hoodie",price:1800,category:"Clothing"},
+{id:14,name:"Sneakers",price:3500,category:"Clothing"},
+{id:15,name:"Cap",price:500,category:"Clothing"},
+{id:16,name:"Sugar",price:45,category:"Food"},
+{id:17,name:"Cooking Oil",price:150,category:"Food"},
+{id:18,name:"Biscuits",price:30,category:"Food"},
+{id:19,name:"Chocolate",price:100,category:"Food"}
+];
+
+let cart=[];
+
+/* DISPLAY PRODUCTS */
+function displayProducts(data){
+let html="";
+data.forEach(p=>{
+html+=`
+<div class="card">
+<h3>${p.name}</h3>
+<p class="price">₹${p.price}</p>
+<p>${p.category}</p>
+<button onclick="addToCart(${p.id})">Add to Cart</button>
+</div>
+`;
+});
+document.getElementById("productList").innerHTML=html;
+}
+
+function showProducts(){
+displayProducts(products);
+}
+
+/* SEARCH */
+function searchProduct(){
+let id=document.getElementById("searchId").value;
+displayProducts(products.filter(p=>p.id==id));
+}
+
+/* FILTER */
+function filterCategory(cat){
+if(cat=="All"){
+displayProducts(products);
+}else{
+displayProducts(products.filter(p=>p.category==cat));
+}
+}
+
+/* ✅ SORT FUNCTION */
+function sortProducts(type){
+let sorted=[...products];
+
+if(type=="low"){
+sorted.sort((a,b)=>a.price-b.price);
+}
+else if(type=="high"){
+sorted.sort((a,b)=>b.price-a.price);
+}
+
+displayProducts(sorted);
+}
+
+/* ADD TO CART */
+function addToCart(id){
+let product=products.find(p=>p.id==id);
+let existing=cart.find(item=>item.id==id);
+
+if(existing){
+existing.qty++;
+}else{
+cart.push({...product,qty:1});
+}
+
+updateCart();
+}
+
+/* UPDATE CART */
+function updateCart(){
+let html="";
+let total=0;
+let count=0;
+
+cart.forEach((item,index)=>{
+total+=item.price*item.qty;
+count+=item.qty;
+
+html+=`
+<div class="cart-item">
+<span>${item.name} x${item.qty}</span>
+<button onclick="removeItem(${index})">❌</button>
+</div>
+`;
+});
+
+document.getElementById("cartItems").innerHTML=html;
+document.getElementById("totalPrice").innerText="Total: ₹"+total;
+document.getElementById("count").innerText=count;
+}
+
+/* REMOVE ITEM */
+function removeItem(index){
+cart.splice(index,1);
+updateCart();
+}
+
+/* INIT */
+showProducts();
+
+</script>
+
+</body>
+</html>

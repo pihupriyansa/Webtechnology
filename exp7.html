@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Home Dashboard</title>
+
+<style>
+
+/* BODY */
+body{
+margin:0;
+font-family:'Segoe UI', sans-serif;
+background: linear-gradient(135deg, #e0f7fa, #e1bee7, #fce4ec);
+background-size: 300% 300%;
+animation: bgMove 10s ease infinite;
+color:#333;
+}
+
+@keyframes bgMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* HEADER */
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+background:rgba(255,255,255,0.6);
+backdrop-filter:blur(10px);
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.header h1{
+margin:0;
+font-size:22px;
+color:#333;
+}
+
+/* NAV LINKS */
+.nav a{
+color:#333;
+text-decoration:none;
+margin-left:20px;
+font-weight:500;
+transition:0.3s;
+}
+
+.nav a:hover{
+color:#6a11cb;
+}
+
+/* MAIN */
+.main{
+display:flex;
+justify-content:center;
+align-items:center;
+height:80vh;
+}
+
+/* CARDS */
+.cards{
+display:flex;
+gap:30px;
+}
+
+/* CARD STYLE */
+.card{
+width:260px;
+padding:25px;
+border-radius:15px;
+background:white;
+box-shadow:0 8px 20px rgba(0,0,0,0.15);
+transition:0.4s;
+text-align:center;
+}
+
+.card:hover{
+transform:translateY(-10px) scale(1.05);
+}
+
+/* ICON */
+.icon{
+font-size:40px;
+margin-bottom:15px;
+}
+
+/* BUTTON */
+.card a{
+display:inline-block;
+margin-top:15px;
+padding:10px 18px;
+text-decoration:none;
+color:white;
+border-radius:8px;
+font-weight:bold;
+}
+
+/* BUTTON COLORS */
+.student a{
+background:linear-gradient(45deg,#36d1dc,#5b86e5);
+}
+
+.shopping a{
+background:linear-gradient(45deg,#ff758c,#ff7eb3);
+}
+
+.card a:hover{
+opacity:0.85;
+}
+
+/* FOOTER */
+.footer{
+text-align:center;
+padding:15px;
+font-size:14px;
+color:#555;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+<h1>✨ My Dashboard</h1>
+
+<div class="nav">
+<a href="studentdisplay.html">Students</a>
+<a href="shopping.html">Shopping</a>
+</div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+
+<div class="cards">
+
+<!-- STUDENT CARD -->
+<div class="card student">
+<div class="icon">🎓</div>
+<h2>Student System</h2>
+<p>Manage student records, marks and courses.</p>
+<a href="studentdisplay.html">Open</a>
+</div>
+
+<!-- SHOPPING CARD -->
+<div class="card shopping">
+<div class="icon">🛒</div>
+<h2>Shopping System</h2>
+<p>Browse products and manage your cart.</p>
+<a href="shopping.html">Open</a>
+</div>
+
+</div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+© 2026 Mini Project UI
+</div>
+
+</body>
+</html>

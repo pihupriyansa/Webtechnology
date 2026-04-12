@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Management</title>
+
+<style>
+
+body{
+font-family:'Segoe UI', Arial;
+text-align:center;
+background:linear-gradient(135deg,#c3ecf7,#f5f7fa);
+margin:0;
+padding:20px;
+}
+
+h2{
+color:#333;
+margin-bottom:20px;
+}
+
+.container{
+background:white;
+padding:20px;
+margin:auto;
+width:80%;
+border-radius:12px;
+box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+button{
+padding:10px 15px;
+margin:6px;
+border:none;
+background:linear-gradient(45deg,#4CAF50,#2e7d32);
+color:white;
+border-radius:6px;
+cursor:pointer;
+font-weight:bold;
+transition:0.3s;
+}
+
+button:hover{
+transform:translateY(-2px);
+background:linear-gradient(45deg,#43a047,#1b5e20);
+}
+
+input,select{
+padding:8px;
+margin:5px;
+border-radius:6px;
+border:1px solid #ccc;
+outline:none;
+transition:0.3s;
+}
+
+input:focus,select:focus{
+border-color:#4CAF50;
+box-shadow:0 0 5px rgba(76,175,80,0.5);
+}
+
+table{
+margin:20px auto;
+border-collapse:collapse;
+width:90%;
+background:white;
+border-radius:10px;
+overflow:hidden;
+}
+
+th{
+background:linear-gradient(45deg,#4CAF50,#2e7d32);
+color:white;
+padding:10px;
+}
+
+td{
+padding:10px;
+border-bottom:1px solid #ddd;
+}
+
+tr:hover{
+background:#f1f1f1;
+}
+
+tr:nth-child(even){
+background:#fafafa;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Student Information System</h2>
+
+<button onclick="showAll()">Show All Students</button>
+<button onclick="marks80()">Marks > 80</button>
+<button onclick="upperNames()">Uppercase Names</button>
+<button onclick="topper()">Topper Student</button>
+<button onclick="sortMarks()">Sort By Marks (Descending)</button>
+
+<br><br>
+
+<input type="text" id="searchName" placeholder="Search student by name">
+<button onclick="searchStudent()">Search</button>
+
+<br><br>
+
+<label><b>Filter by Course:</b></label>
+<select onchange="filterCourse(this.value)">
+<option value="All">All Courses</option>
+<option value="CSE">CSE</option>
+<option value="ECE">ECE</option>
+<option value="IT">IT</option>
+<option value="ME">ME</option>
+</select>
+
+<div id="output"></div>
+
+</div>
+
+<script>
+
+let students = [
+{roll:1,name:"Rahul",marks:85,course:"CSE",age:20},
+{roll:2,name:"Anita",marks:72,course:"ECE",age:21},
+{roll:3,name:"Vikram",marks:91,course:"CSE",age:20},
+{roll:4,name:"Priya",marks:67,course:"ME",age:22},
+{roll:5,name:"Arjun",marks:88,course:"CSE",age:21},
+{roll:6,name:"Neha",marks:76,course:"ECE",age:20},
+{roll:7,name:"Karan",marks:82,course:"CSE",age:22},
+{roll:8,name:"Sneha",marks:95,course:"IT",age:21},
+{roll:9,name:"Rohit",marks:69,course:"ME",age:20},
+{roll:10,name:"Aisha",marks:87,course:"CSE",age:21}
+];
+
+function display(data){
+
+let html="<table>";
+html+="<tr><th>Roll</th><th>Name</th><th>Marks</th><th>Course</th><th>Age</th></tr>";
+
+data.forEach(s=>{
+html+=`<tr>
+<td>${s.roll}</td>
+<td>${s.name}</td>
+<td>${s.marks}</td>
+<td>${s.course}</td>
+<td>${s.age}</td>
+</tr>`;
+});
+
+html+="</table>";
+
+document.getElementById("output").innerHTML=html;
+
+}
+
+function showAll(){
+display(students);
+}
+
+function marks80(){
+display(students.filter(s=>s.marks>80));
+}
+
+function filterCourse(course){
+if(course=="All"){
+display(students);
+}
+else{
+display(students.filter(s=>s.course==course));
+}
+}
+
+function searchStudent(){
+let name=document.getElementById("searchName").value.toLowerCase();
+let result=students.filter(s=>s.name.toLowerCase().includes(name));
+display(result);
+}
+
+function upperNames(){
+// ✅ convert and show in table
+let updated = students.map(s=>({
+...s,
+name:s.name.toUpperCase()
+}));
+
+display(updated);
+}
+
+function topper(){
+let top=students.reduce((a,b)=>a.marks>b.marks?a:b);
+display([top]);
+}
+
+function sortMarks(){
+let sorted=[...students].sort((a,b)=>b.marks-a.marks);
+display(sorted);
+}
+
+</script>
+
+</body>
+</html>
