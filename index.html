@@ -10,16 +10,8 @@
             display:flex;
             flex-direction:column;
             align-items:center;
-            background:linear-gradient(-45deg,#fbc2eb,#a6c1ee,#84fab0,#8fd3f4);
-            background-size:400% 400%;
-            animation:gradientMove 10s ease infinite;
+            background:#82cd5a; /* ✅ Single background color */
             font-family:'Segoe UI', sans-serif;
-        }
-
-        @keyframes gradientMove{
-            0%{background-position:0% 50%;}
-            50%{background-position:100% 50%;}
-            100%{background-position:0% 50%;}
         }
 
         h2{
@@ -38,10 +30,10 @@
 
         .card{
             width:220px;
-            background:rgba(255,255,255,0.25);
+            background:rgba(255,255,255,0.2);
             border-radius:20px;
             padding:20px;
-            backdrop-filter:blur(15px);
+            backdrop-filter:blur(10px);
             box-shadow:0 10px 30px rgba(0,0,0,0.2);
             border:1px solid rgba(255,255,255,0.3);
             text-align:center;
@@ -55,7 +47,7 @@
 
         .card a{
             text-decoration:none;
-            color:#6a5acd;
+            color:#ffffff;
             font-weight:bold;
             font-size:18px;
         }
@@ -63,7 +55,7 @@
         .desc{
             margin-top:10px;
             font-size:14px;
-            color:#333;
+            color:#f1f1f1;
         }
     </style>
 </head>
@@ -76,12 +68,12 @@
 
     <div class="card">
         <a href="experiment1.html">Experiment 1</a>
-        <div class="desc">Portofolio Designing </div>
+        <div class="desc">Portfolio Designing</div>
     </div>
 
     <div class="card">
         <a href="exp2.html">Experiment 2</a>
-        <div class="desc">Adding CSS in the Portofolio</div>
+        <div class="desc">Adding CSS in the Portfolio</div>
     </div>
 
     <div class="card">
@@ -96,12 +88,12 @@
 
     <div class="card">
         <a href="experiment5.html">Experiment 5</a>
-        <div class="desc">Designing simple and phone calculator using Javascript</div>
+        <div class="desc">Calculator using JavaScript</div>
     </div>
 
     <div class="card">
         <a href="exp6.html">Experiment 6</a>
-        <div class="desc">DOM manipulation using JavaScript(Contatck Form)</div>
+        <div class="desc">DOM manipulation (Contact Form)</div>
     </div>
 
     <div class="card">
